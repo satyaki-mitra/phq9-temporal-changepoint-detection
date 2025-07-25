@@ -24,7 +24,7 @@ This project implements a sophisticated change point detection system to identif
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/phq9-temporal-changepoint-detection.git
+git clone https://github.com/satyaki-mitra/phq9-temporal-changepoint-detection.git
 cd phq9-temporal-changepoint-detection
 pip install -r requirements.txt
 ```
