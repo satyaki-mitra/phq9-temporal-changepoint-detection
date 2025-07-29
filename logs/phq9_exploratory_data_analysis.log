@@ -1,0 +1,68 @@
+2025-07-29 17:32:44,704 - INFO - Loaded data from: data/synthetic_phq9_data.csv
+2025-07-29 17:32:44,704 - INFO - Data shape: (50, 100)
+2025-07-29 17:32:44,704 - INFO - Missing values: 4450
+2025-07-29 17:32:44,704 - INFO - Initialized PHQ9DataAnalyzer
+2025-07-29 17:32:44,704 - INFO - Data validation completed successfully
+2025-07-29 17:32:44,704 - INFO - Data loaded successfully with shape: (50, 100)
+2025-07-29 17:32:44,704 - INFO - Data validation completed successfully
+2025-07-29 17:32:44,723 - INFO - Summary statistics calculated successfully
+2025-07-29 17:32:44,723 - INFO - Data validation completed successfully
+2025-07-29 17:32:44,962 - WARNING - No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+2025-07-29 17:32:45,950 - INFO - Daily average plot saved to: results/eda_results/scatter_plot.png
+2025-07-29 17:32:47,899 - INFO - Daily average range: 0.44 - 15.83
+2025-07-29 17:32:47,899 - INFO - Data validation completed successfully
+2025-07-29 17:32:47,900 - INFO - Testing clustering with 2 to 21 clusters
+2025-07-29 17:32:49,630 - INFO - Cluster optimization plots saved to: results/eda_results/cluster_optimization.png
+2025-07-29 17:32:51,056 - INFO - Elbow point suggests 4 clusters
+2025-07-29 17:32:51,057 - INFO - Silhouette analysis suggests 4 clusters
+2025-07-29 17:32:51,057 - INFO - Data validation completed successfully
+2025-07-29 17:32:51,065 - INFO - Clustering completed with 4 clusters:
+2025-07-29 17:32:51,065 - INFO -   Cluster 0: 1 days
+2025-07-29 17:32:51,065 - INFO -   Cluster 1: 47 days
+2025-07-29 17:32:51,065 - INFO -   Cluster 2: 1 days
+2025-07-29 17:32:51,065 - INFO -   Cluster 3: 1 days
+2025-07-29 17:32:51,065 - INFO - Data validation completed successfully
+2025-07-29 17:32:52,669 - INFO - Cluster plot saved to: results/eda_results/cluster_results.png
+2025-07-29 17:32:54,122 - INFO - Data validation completed successfully
+2025-07-29 17:32:54,124 - INFO - Cluster characteristics analyzed successfully
+2025-07-29 17:32:54,124 - INFO - Data validation completed successfully
+2025-07-29 17:32:57,043 - INFO - Clustering methods comparison completed
+2025-07-29 17:32:57,044 - INFO - Generating comprehensive report in: results/eda_results
+2025-07-29 17:32:57,044 - INFO - Data validation completed successfully
+2025-07-29 17:32:57,066 - INFO - Summary statistics calculated successfully
+2025-07-29 17:32:57,068 - INFO - Data validation completed successfully
+2025-07-29 17:32:57,151 - WARNING - No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+2025-07-29 17:32:58,108 - INFO - Daily average plot saved to: results/eda_results/scatter_plot.png
+2025-07-29 17:33:00,022 - INFO - Daily average range: 0.44 - 15.83
+2025-07-29 17:33:00,023 - INFO - Data validation completed successfully
+2025-07-29 17:33:01,033 - INFO - Daily average plot saved to: results/eda_results/daily_averages.png
+2025-07-29 17:33:02,989 - INFO - Daily average range: 0.44 - 15.83
+2025-07-29 17:33:02,989 - INFO - Average trend slope: -0.211 points per day
+2025-07-29 17:33:02,990 - INFO - Data validation completed successfully
+2025-07-29 17:33:02,990 - INFO - Testing clustering with 2 to 21 clusters
+2025-07-29 17:33:04,422 - INFO - Cluster optimization plots saved to: results/eda_results/cluster_optimization.png
+2025-07-29 17:33:06,163 - INFO - Elbow point suggests 4 clusters
+2025-07-29 17:33:06,163 - INFO - Silhouette analysis suggests 4 clusters
+2025-07-29 17:33:06,163 - INFO - Data validation completed successfully
+2025-07-29 17:33:06,170 - INFO - Clustering completed with 4 clusters:
+2025-07-29 17:33:06,170 - INFO -   Cluster 0: 1 days
+2025-07-29 17:33:06,170 - INFO -   Cluster 1: 47 days
+2025-07-29 17:33:06,170 - INFO -   Cluster 2: 1 days
+2025-07-29 17:33:06,170 - INFO -   Cluster 3: 1 days
+2025-07-29 17:33:06,171 - INFO - Data validation completed successfully
+2025-07-29 17:33:07,800 - INFO - Cluster plot saved to: results/eda_results/cluster_results.png
+2025-07-29 17:33:09,699 - INFO - Data validation completed successfully
+2025-07-29 17:33:09,701 - INFO - Cluster characteristics analyzed successfully
+2025-07-29 17:33:09,706 - INFO - Comprehensive report generated successfully
+2025-07-29 17:33:09,709 - INFO - ================================================================================
+2025-07-29 17:33:09,709 - INFO - PHQ-9 ANALYSIS COMPLETED SUCCESSFULLY
+2025-07-29 17:33:09,709 - INFO - ================================================================================
+2025-07-29 17:33:09,709 - INFO - Data shape: (50, 100)
+2025-07-29 17:33:09,709 - INFO - Total PHQ-9 scores: 550
+2025-07-29 17:33:09,710 - INFO - Missing data percentage: 89.00%
+2025-07-29 17:33:09,710 - INFO - Score range: 0.0 - 22.0
+2025-07-29 17:33:09,710 - INFO - Elbow method suggests: 4 clusters
+2025-07-29 17:33:09,710 - INFO - Silhouette analysis suggests: 4 clusters
+2025-07-29 17:33:09,710 - INFO - Using 4 clusters for final analysis
+2025-07-29 17:33:09,710 - INFO - Results saved in: results/eda_results/
+2025-07-29 17:33:09,710 - INFO - ================================================================================
