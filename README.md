@@ -5,23 +5,55 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-> Advanced temporal clustering system for detecting significant shifts in depression severity patterns using PHQ-9 questionnaire data.
+> Temporal clustering and change point detection framework based on PHQ-9 scores to analyze mental health trajectories over time. Includes synthetic data generation, EDA, and robust visual/statistical interpretation.
 
-## 🎯 Overview
+This repository presents an end-to-end system that:
 
-This project implements a sophisticated change point detection system to identify critical moments in depression treatment trajectories. By analyzing Patient Health Questionnaire-9 (PHQ-9) scores over time, the system can detect when patients experience significant improvements or deteriorations in their mental health status.
+- Generates synthetic PHQ-9 data resembling real-world clinical trends.
+- Performs exploratory data analysis (EDA) on patient mental health assessments.
+- Detects statistically significant **change points** using the **PELT** algorithm with L1 regularization.
+- Visualizes the progression of depression severity using robust statistical and graphical tools.
 
-### Key Features
+---
 
-- **🔍 Change Point Detection**: PELT algorithm with L1 regularization for optimal segmentation
-- **📊 Statistical Validation**: Wilcoxon rank-sum and t-tests for cluster significance
-- **📈 Comprehensive Visualization**: Multi-layered plots for clinical interpretation
-- **🏥 Healthcare-Ready**: Handles sparse, real-world clinical data patterns
-- **🧪 Synthetic Data Generation**: Clinically realistic PHQ-9 progression simulation
+## 🧩 Key Features
 
-## 🚀 Quick Start
+- 🔁 **Synthetic Data Generator**: Clinically structured PHQ-9 progression  
+- 📊 **EDA Module**: Clustering, daily averages, summary stats  
+- 🧠 **Change Point Detection**: PELT with LASSO regularization and statistical validation  
+- 📉 **Advanced Visualization**: Scatter plots, segmentation diagrams, validation plots  
+- 📁 **Well-Organized Results**: Auto-generated plots, CSVs, JSON summaries  
 
-### Installation
+---
+
+## 📐 Model Architecture: PELT + LASSO for Change Point Detection
+
+We leverage the **Pruned Exact Linear Time (PELT)** algorithm for exact and efficient change point detection, combined with a **LASSO penalty** to prevent over-segmentation by penalizing the number of change points.
+
+- **Why PELT ?** It’s one of the only exact, linear-time algorithms for multiple change point detection.
+- **Why LASSO Penalty ?** To sparsify segment detection and maintain interpretability while handling multivariate shifts.
+
+This method robustly detects both abrupt and subtle distributional changes in temporal PHQ-9 trajectories.
+
+---
+
+## 📊 Temporal Clustering via Coefficient of Variation (CV)
+
+After change point detection, we compute the **Coefficient of Variation (CV)** for each segment:
+
+- CV = (Standard Deviation) / (Mean)
+- A higher CV implies instability or increased fluctuation in depression scores.
+
+We perform clustering of these CV segments using **unsupervised methods** (e.g., KMeans) and visualize distinct psychological states over time.
+
+This approach provides interpretable behavioral phases (stable vs volatile mental states).
+
+---
+
+
+## 🚀 Getting Started
+
+### 🛠 Installation
 
 ```bash
 git clone https://github.com/satyaki-mitra/phq9-temporal-changepoint-detection.git
@@ -29,164 +61,183 @@ cd phq9-temporal-changepoint-detection
 pip install -r requirements.txt
 ```
 
-### Basic Usage
+## ▶️ Run the Pipeline
 
-```python
-from src.run import change_point_detection_run
+### 🔹 Step 1: Generate Synthetic Data
 
-# Analyze PHQ-9 data for change points
-result = change_point_detection_run("data/PHQ_9_sample_dataset.csv")
-print(result)  # "Successful Run"
+```bash
+python generate_data.py
+```
+**Outputs:**
+
+- `data/synthetic_phq9_data.csv`
+
+**Logs:**
+
+- `logs/phq9_data_generator.log`
+
+## 🔹 Step 2: Perform EDA
+
+```bash
+python eda_performer.py
 ```
 
-### Generate Synthetic Data
+**Outputs (saved in `results/eda_results/`):**
 
-```python
-# Open and run the Jupyter notebook
-jupyter notebook notebooks/PHQ-9_Synthetic_data_Generation_and_EDA.ipynb
+- `cluster_results.png`, `cluster_optimization.png`, `scatter_plot.png`, `daily_averages.png`
+- `summary_statistics.csv`, `cluster_characteristics.csv`, `clustering_method_comparison.csv`
+- `analysis_summary.json`
+
+**Logs:**
+
+- `logs/phq9_exploratory_data_analysis.log`
+
+## 🔹 Step 3: Detect Change Points
+
+```bash
+python run.py
 ```
 
-## 📋 Methodology
+**Outputs:**
 
-### 1. Data Preprocessing
-- **Aggregation Metric**: Coefficient of Variation (CV) across daily PHQ-9 scores
-- **Missing Data Handling**: Sparse survey completion patterns
-- **Temporal Alignment**: 365-day treatment timeline analysis
+- `aggregated_data_plot.png`
+- `aggregated_cv_data.csv`
+- `change_point_analysis_results.json`
+- `change_point_detected_scatter_diagram.png`
+- `statistical_test_results.csv`
+- `validation_plot.png`
+- `cluster_boundaries.csv`
 
-### 2. Change Point Detection
-- **Algorithm**: Pruned Exact Linear Time (PELT)
-- **Cost Function**: L1 norm (Least Absolute Deviations)
-- **Regularization**: LASSO for optimal segmentation
-- **Parameters**: Configurable penalty, minimum cluster size, jump constraints
+**Logs:**
 
-### 3. Statistical Validation
-- **Significance Testing**: Wilcoxon rank-sum test for non-parametric data
-- **Fallback Method**: T-test for constant value groups
-- **Alpha Level**: 0.05 significance threshold
-- **Interpretation**: Automated p-value analysis
+- `logs/change_point_detection.log`
 
-## 📊 Sample Results
+## 📂 Project Structure
 
-The system typically identifies **6 distinct phases** in depression treatment:
-
-1. **Initial Assessment** (Days 2-10): High variability, baseline establishment
-2. **Early Treatment** (Days 11-19): Moderate improvement, stabilization begins
-3. **Treatment Response** (Days 21-60): Significant variation, potential setbacks
-4. **Stabilization Period** (Days 64-71): Reduced variability, consistent improvement
-5. **Recovery Phase** (Days 73-84): Temporary fluctuations, overall progress
-6. **Maintenance** (Days 92-364): Long-term stability, sustained recovery
-
-## 🗂️ Project Structure
-
-```
-depression-trajectory-clustering/
-├── 📊 data/
-│   └── PHQ_9_sample_dataset.csv
-├── 📓 notebooks/
-│   └── PHQ-9_Synthetic_data_Generation_and_EDA.ipynb
-├── 🔧 src/
-│   ├── run.py
-│   ├── config.py
-│   ├── preprocessing/
-│   │   └── preprocess_data.py
-│   ├── change_detection/
-│   │   └── detect_change_points.py
-│   ├── visualization/
-│   │   └── visualize_change_points.py
-│   └── tests/
-│       └── test_cluster_validity.py
-├── 📈 plots/
-├── 📚 docs/
+```plaintext
+phq9-temporal-changepoint-detection/
+├── config.py
+├── generate_data.py
+├── eda_performer.py
+├── run.py
+├── src/
+│   ├── change_point_detector.py
+│   ├── phq9_data_analyzer.py
+│   └── synthetic_phq9_data_generator.py
+├── data/
+│   └── synthetic_phq9_data.csv
+├── results/
+│   ├── aggregated_cv_data.csv
+│   ├── aggregated_data_plot.png
+│   ├── change_point_analysis_results.json
+│   ├── change_point_detected_scatter_diagram.png
+│   ├── cluster_boundaries.csv
+│   ├── statistical_test_results.csv
+│   ├── validation_plot.png
+│   └── eda_results/
+│       ├── analysis_summary.json
+│       ├── cluster_characteristics.csv
+│       ├── cluster_optimization.png
+│       ├── cluster_results.png
+│       ├── clustering_method_comparison.csv
+│       ├── daily_averages.png
+│       ├── scatter_plot.png
+│       └── summary_statistics.csv
+├── logs/
+│   └── *.log
+├── notebooks/
+│   └── *.ipynb
+├── docs/
+│   └── *.pdf
 ├── requirements.txt
 └── README.md
 ```
 
-## 🛠️ Technical Implementation
+## 🔬 Methodology Highlights
 
-### Core Technologies
+### 📌 Data Processing
 
-- **Python 3.8+**: Primary development language
-- **Ruptures**: Change point detection library
-- **Pandas/NumPy**: Data manipulation and numerical computing
-- **Matplotlib**: Visualization and plotting
-- **SciPy**: Statistical testing and validation
-- **Scikit-learn**: Additional clustering methods
+- Aggregation Metric: **Coefficient of Variation (CV)**
+- Temporal Aggregation: **Day-wise PHQ-9 consolidation**
+- Sparse Sampling Support
 
-### Algorithm Details
+### 📌 Change Point Detection
 
-```python
-# PELT Configuration
-model = "l1"                    # L1 regularization
-cost_function = rpt.costs.CostL1
-min_size = 2                    # Minimum cluster size
-jump = 1                        # Search granularity
-penalty = 0.5                   # Regularization strength
-```
+- Algorithm: **PELT**
+- Cost Function: **L1 norm**
+- Regularization: **LASSO**
+- Significance Tests: **Wilcoxon rank-sum**, fallback to **T-test**
 
-## 📈 Clinical Applications
+### 📌 Clustering (EDA)
 
-### Mental Health Treatment
-- **Treatment Efficacy Monitoring**: Identify when interventions are working
-- **Relapse Detection**: Early warning system for symptom deterioration
-- **Personalized Care**: Tailor treatment plans based on trajectory patterns
-
-### Research Applications
-- **Clinical Trials**: Objective measurement of treatment response timelines
-- **Population Health**: Understanding depression recovery patterns at scale
-- **Intervention Timing**: Optimal moments for treatment adjustments
-
-## 🔬 Validation & Testing
-
-### Statistical Rigor
-- **Hypothesis Testing**: Automated significance testing between clusters
-- **Cross-Validation**: Robust parameter selection
-- **Sensitivity Analysis**: Penalty parameter optimization
-
-### Quality Metrics
-- **Cluster Separation**: Statistical significance between segments
-- **Temporal Consistency**: Logical progression of depression scores
-- **Clinical Validity**: Alignment with known treatment timelines
-
-## 📊 Example Outputs
-
-### Change Point Visualization
-![Change Points](plots/validated_clusters_plot.png)
-
-### Segmentation Analysis
-![Segmentation](plots/final_segmentation_plot.png)
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
-
-### Development Setup
-
-```bash
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install development dependencies
-pip install -r requirements-dev.txt
-
-# Run tests
-python -m pytest tests/
-```
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **Clinical Validation**: Based on established PHQ-9 depression screening protocols
-- **Statistical Methods**: PELT algorithm implementation using the Ruptures library
-- **Healthcare Standards**: Aligned with clinical depression assessment guidelines
-
-## 🙋‍♂️ Author
-
-**Satyaki Mitra**  
+- **KMeans** and other clustering strategies
+- Multiple cluster evaluation metrics
+- Daily score trends and visual diagnostics
 
 ---
 
-⭐ **If this project helped you, please consider starring it!**
+## 📈 Example Outputs
+
+- **Change Point Visualization**: `change_point_detected_scatter_diagram.png`, `aggregated_data_plot.png`
+- **Clustered Patterns**: `cluster_results.png`, `scatter_plot.png`
+- **Daily Averages**: `daily_averages.png`, `summary_statistics.csv`
+
+![Aggregated CV Plot](results/aggregated_data_plot.png)
+
+**Interpretation:**  
+This graph illustrates the daily coefficient of variation in PHQ-9 scores across patients. Elevated CV values may reflect more heterogeneous mental health responses or periods of instability in mood among patients.
+
+---
+
+### 🔹 Change Point Detection Results
+
+![Change Point Detection](results/change_point_detected_scatter_diagram.png)
+
+**Interpretation:**  
+Using the PELT algorithm with LASSO regularization, this scatter plot marks statistically significant temporal change points. These points represent major shifts in population-level depression patterns.
+
+---
+
+### 🔹 Model Validation – Predicted vs Observed
+
+![Validation Plot](results/validation_plot.png)
+
+**Interpretation:**  
+This plot shows the model’s fit quality, helping validate the detected change points by overlaying predicted vs actual score deviations. Well-aligned points indicate strong model robustness.
+
+---
+
+## 🧪 Core Libraries
+
+- `ruptures` – for change point detection  
+- `pandas`, `numpy` – data manipulation  
+- `matplotlib`, `seaborn` – data visualization  
+- `scikit-learn` – clustering  
+- `scipy.stats` – statistical validation  
+
+---
+
+## 📘 Notebooks for Exploration
+
+- `notebooks/PHQ-9_Synthetic_data_Generation_and_EDA.ipynb`
+- `notebooks/Temporal Clustering  of PHQ-9 Scores of a Specified Set of Patients.ipynb`
+
+---
+
+## ⚕️ Clinical and Research Applications
+
+- 📉 **Treatment Response Monitoring**
+- 🛑 **Relapse Detection**
+- 📊 **Clinical Trial Analytics**
+- 🎯 **Personalized Intervention Strategies**
+
+---
+
+## 🙋 Author
+
+**Satyaki Mitra**  
+_Data Scientist | ML Enthusiast | Clinical AI Research_
+
+---
+
+⭐ *If you found this useful, consider starring the repository!*
