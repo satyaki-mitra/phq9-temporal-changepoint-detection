@@ -1,0 +1,6 @@
+Boundary_1_Start,Boundary_1_End,Boundary_2_Start,Boundary_2_End,Test_Name,P_Value,Test_Statistic,Significant,Interpretation
+0,6,6,14,Wilcoxon Rank-Sum Test,0.0019457736937391486,-3.0983866769659336,True,The change point is statistically significant (p-value = 0.0019)
+6,14,14,27,Wilcoxon Rank-Sum Test,0.00016596649222473613,-3.765875486765087,True,The change point is statistically significant (p-value = 0.0002)
+14,27,27,30,Wilcoxon Rank-Sum Test,0.018554892252216043,2.3543547789870933,True,The change point is statistically significant (p-value = 0.0186)
+27,30,30,34,Wilcoxon Rank-Sum Test,0.03389485352468927,-2.1213203435596424,True,The change point is statistically significant (p-value = 0.0339)
+30,34,34,50,Wilcoxon Rank-Sum Test,0.002496908915141548,3.0237157840738176,True,The change point is statistically significant (p-value = 0.0025)

@@ -1,0 +1,124 @@
+{
+    "analysis_configuration": {
+        "data_path": "data/synthetic_phq9_data.csv",
+        "penalty": 0.5,
+        "jump": 1,
+        "minimum_points": 2,
+        "smoothing_window_size": 10,
+        "alpha": 0.05
+    },
+    "data_summary": {
+        "raw_data_shape": [
+            100,
+            50
+        ],
+        "num_change_points": 5
+    },
+    "change_points": [
+        6,
+        14,
+        27,
+        30,
+        34,
+        50
+    ],
+    "cluster_boundaries": {
+        "Cluster-1": {
+            "Start": "Day_2",
+            "End": "Day_10"
+        },
+        "Cluster-2": {
+            "Start": "Day_11",
+            "End": "Day_19"
+        },
+        "Cluster-3": {
+            "Start": "Day_21",
+            "End": "Day_60"
+        },
+        "Cluster-4": {
+            "Start": "Day_64",
+            "End": "Day_71"
+        },
+        "Cluster-5": {
+            "Start": "Day_73",
+            "End": "Day_84"
+        },
+        "Cluster-6": {
+            "Start": "Day_92",
+            "End": "Day_364"
+        }
+    },
+    "aggregated_statistics": "Day\nDay_2      0.218218\nDay_3      0.236617\nDay_6      0.167437\nDay_8      0.168391\nDay_9      0.154346\nDay_10     0.166048\nDay_11     0.361485\nDay_12     0.314284\nDay_13     0.402251\nDay_14     0.261488\nDay_15     0.370171\nDay_16     0.330011\nDay_17     0.393542\nDay_19     0.385425\nDay_21     1.249793\nDay_27     1.452966\nDay_28     1.195229\nDay_29     1.541104\nDay_31     1.690309\nDay_34     1.157584\nDay_36     1.333333\nDay_38     0.886266\nDay_40     1.527525\nDay_41     1.275625\nDay_50     1.457384\nDay_53     1.518592\nDay_60     1.587451\nDay_64     0.852803\nDay_66     1.000000\nDay_71     0.975464\nDay_73     1.597191\nDay_76     1.788854\nDay_82     1.312335\nDay_84     1.658312\nDay_92     0.857143\nDay_102    0.738074\nDay_117    0.766747\nDay_118    0.797921\nDay_133    0.648379\nDay_138    1.311488\nDay_149    0.772486\nDay_150    0.757888\nDay_158    0.868313\nDay_163    0.819756\nDay_213    0.827526\nDay_218    0.423247\nDay_219    1.069045\nDay_268    0.870968\nDay_280    0.790569\nDay_364    1.247219\ndtype: float64",
+    "statistical_test_results": {
+        "(0, 6)_to_(6, 14)": {
+            "boundary_1": [
+                0,
+                6
+            ],
+            "boundary_2": [
+                6,
+                14
+            ],
+            "test_name": "Wilcoxon Rank-Sum Test",
+            "p_value": 0.0019457736937391486,
+            "test_statistic_value": -3.0983866769659336,
+            "interpretation": "The change point is statistically significant (p-value = 0.0019)"
+        },
+        "(6, 14)_to_(14, 27)": {
+            "boundary_1": [
+                6,
+                14
+            ],
+            "boundary_2": [
+                14,
+                27
+            ],
+            "test_name": "Wilcoxon Rank-Sum Test",
+            "p_value": 0.00016596649222473613,
+            "test_statistic_value": -3.765875486765087,
+            "interpretation": "The change point is statistically significant (p-value = 0.0002)"
+        },
+        "(14, 27)_to_(27, 30)": {
+            "boundary_1": [
+                14,
+                27
+            ],
+            "boundary_2": [
+                27,
+                30
+            ],
+            "test_name": "Wilcoxon Rank-Sum Test",
+            "p_value": 0.018554892252216043,
+            "test_statistic_value": 2.3543547789870933,
+            "interpretation": "The change point is statistically significant (p-value = 0.0186)"
+        },
+        "(27, 30)_to_(30, 34)": {
+            "boundary_1": [
+                27,
+                30
+            ],
+            "boundary_2": [
+                30,
+                34
+            ],
+            "test_name": "Wilcoxon Rank-Sum Test",
+            "p_value": 0.03389485352468927,
+            "test_statistic_value": -2.1213203435596424,
+            "interpretation": "The change point is statistically significant (p-value = 0.0339)"
+        },
+        "(30, 34)_to_(34, 50)": {
+            "boundary_1": [
+                30,
+                34
+            ],
+            "boundary_2": [
+                34,
+                50
+            ],
+            "test_name": "Wilcoxon Rank-Sum Test",
+            "p_value": 0.002496908915141548,
+            "test_statistic_value": 3.0237157840738176,
+            "interpretation": "The change point is statistically significant (p-value = 0.0025)"
+        }
+    }
+}
