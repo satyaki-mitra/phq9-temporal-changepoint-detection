@@ -1,0 +1,53 @@
+{
+    "data_shape": [
+        50,
+        100
+    ],
+    "total_scores": "550",
+    "missing_percentage": 89.0,
+    "score_range": "0.0 - 22.0",
+    "elbow_point_clusters": 4,
+    "optimal_clusters_silhouette": 4,
+    "cluster_summary": [
+        {
+            "cluster_id": 0,
+            "n_days": 1,
+            "avg_score": 13.705882352941176,
+            "std_score": NaN,
+            "min_score": 13.705882352941176,
+            "max_score": 13.705882352941176,
+            "day_range": "2-2",
+            "recovery_phase": "Moderate Depression"
+        },
+        {
+            "cluster_id": 1,
+            "n_days": 47,
+            "avg_score": 3.7213309218941255,
+            "std_score": 3.9301170174042035,
+            "min_score": 0.4444444444444444,
+            "max_score": 15.833333333333334,
+            "day_range": "0-49",
+            "recovery_phase": "Minimal/No Depression"
+        },
+        {
+            "cluster_id": 2,
+            "n_days": 1,
+            "avg_score": 15.3125,
+            "std_score": NaN,
+            "min_score": 15.3125,
+            "max_score": 15.3125,
+            "day_range": "5-5",
+            "recovery_phase": "Moderately Severe Depression"
+        },
+        {
+            "cluster_id": 3,
+            "n_days": 1,
+            "avg_score": 15.333333333333334,
+            "std_score": NaN,
+            "min_score": 15.333333333333334,
+            "max_score": 15.333333333333334,
+            "day_range": "3-3",
+            "recovery_phase": "Moderately Severe Depression"
+        }
+    ]
+}
